@@ -1,1 +1,26 @@
-# Please list the required python packages.
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agvr-optimizer"
+version = "0.1.0"
+description = "Adaptive Gradient Variance-informed Rectification (AGVR): Data-driven optimizer rectification"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "numpy>=1.24.0",
+    "hydra-core>=1.3.0",
+    "omegaconf>=2.3.0",
+    "wandb>=0.15.0",
+    "optuna>=3.14.0",
+    "pyyaml>=6.0.1",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "pandas>=2.0.0",
+    "scikit-learn>=1.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4.0", "black>=23.0.0", "ruff>=0.1.0"]

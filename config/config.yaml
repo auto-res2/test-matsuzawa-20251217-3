@@ -1,0 +1,32 @@
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job_logging:
+    version: 1
+    disable_existing_loggers: false
+    formatters:
+      simple:
+        format: '[%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers: [console]
+  callbacks: {}
+
+wandb:
+  entity: ${oc.env:WANDB_ENTITY,gengaru617-personal}
+  project: ${oc.env:WANDB_PROJECT,2025-11-19}
+  mode: online
+
+mode: full
+run: null
+results_dir: ./results
+
+defaults:
+  - override hydra/job_logging: default
